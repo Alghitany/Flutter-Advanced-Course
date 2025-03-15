@@ -1,31 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:week7/core/di/dependency_injection.dart';
 import 'package:week7/core/routing/routes.dart';
+import 'package:week7/features/login/logic/login_cubit.dart';
 import 'package:week7/features/login/ui/login_screen.dart';
 import 'package:week7/features/onboarding/onboarding_screen.dart';
 
-class AppRouter{
+import '../../features/home/ui/home_screen.dart';
 
-  Route generateRoute (RouteSettings settings){
+class AppRouter {
+
+  Route generateRoute(RouteSettings settings) {
     final arguments = settings.arguments;
 
-    switch (settings.name){
+    switch (settings.name) {
       case Routes.onBoardingScreen:
         return MaterialPageRoute(
-            builder: (_)=> const OnboardingScreen(),
+          builder: (_) => const OnboardingScreen(),
         );
       case Routes.loginScreen:
         return MaterialPageRoute(
-            builder: (_)=> const LoginScreen()
+            builder: (_) =>
+                BlocProvider(
+                  create: (context) => getIt<LoginCubit>(),
+                  child: const LoginScreen(),
+                )
+        );
+      case Routes.homeScreen:
+        return MaterialPageRoute(
+          builder: (_) => const HomeScreen(),
         );
       default:
         return MaterialPageRoute(
-            builder: (_)=> Scaffold(
-              body: Center(
-                child: Text("No route defined for ${settings.name}"),
-              ),
-            )
+            builder: (_) =>
+                Scaffold(
+                  body: Center(
+                    child: Text("No route defined for ${settings.name}"),
+                  ),
+                )
         );
-
     }
   }
 }
