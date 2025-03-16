@@ -5,6 +5,8 @@ import 'package:week7/core/routing/routes.dart';
 import 'package:week7/features/login/logic/login_cubit.dart';
 import 'package:week7/features/login/ui/login_screen.dart';
 import 'package:week7/features/onboarding/onboarding_screen.dart';
+import 'package:week7/features/signup/logic/sign_up_cubit.dart';
+import 'package:week7/features/signup/ui/sign_up_screen.dart';
 
 import '../../features/home/ui/home_screen.dart';
 
@@ -24,6 +26,14 @@ class AppRouter {
                 BlocProvider(
                   create: (context) => getIt<LoginCubit>(),
                   child: const LoginScreen(),
+                )
+        );
+      case Routes.signupScreen:
+        return MaterialPageRoute(
+            builder: (_) =>
+                BlocProvider(
+                  create: (context) => getIt<SignupCubit>(),
+                  child: const SignupScreen(),
                 )
         );
       case Routes.homeScreen:
