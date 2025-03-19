@@ -12,10 +12,10 @@ jobs:
       - name: Checkout my repo code
         uses: actions/checkout@v2
 
-      - name: Set up JDK 22
+      - name: Set up JDK 17
         uses: actions/setup-java@v2
         with:
-          java-version: '22.0.1'
+          java-version: '17'
           distribution: 'temurin'
 
       - name: Install Flutter
@@ -29,6 +29,9 @@ jobs:
           ruby-version: "3.3.7"
           bundler-cache: true
           working-directory: android
+
+      - name: Set Gradle Java Home
+        run: echo "org.gradle.java.home=${JAVA_HOME}" >> android/gradle.properties
 
       - name: Build and Distribute App
         env:
