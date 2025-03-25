@@ -49,7 +49,9 @@ class SpecializationsAndDoctorsBlocBuilder extends StatelessWidget {
             specializationDataList: specializationsList ?? [],
           ),
           verticalSpace(8),
-          const DoctorsListView(),
+          DoctorsListView(
+            doctorsList: specializationsList?[0]?.doctorsList,
+          ),
         ],
       ),
     );

@@ -4,18 +4,17 @@ import 'package:week7/features/home/data/models/specializations_response_model.d
 import 'doctors_list_view_item.dart';
 
 class DoctorsListView extends StatelessWidget {
-  final List<Doctors?>? doctorList;
-  const DoctorsListView({super.key, this.doctorList});
+  final List<Doctors?>? doctorsList;
+  const DoctorsListView({super.key, this.doctorsList});
 
   @override
   Widget build(BuildContext context) {
-    print("Doctors List: $doctorList"); // Debugging
     return Expanded(
         child: ListView.builder(
-            itemCount: doctorList?.length,
+            itemCount: doctorsList?.length,
             itemBuilder: (context, index){
               return DoctorsListViewItem(
-                doctorsModel: doctorList?[index],
+                doctorsModel: doctorsList?[index],
               );
             }
         )
