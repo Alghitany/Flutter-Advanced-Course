@@ -11,7 +11,6 @@ class DoctorsListViewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("Doctors Model: $doctorsModel"); // Debugging
 
     return Container(
       margin: EdgeInsets.only(bottom: 16.h),
