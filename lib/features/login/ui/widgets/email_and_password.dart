@@ -32,11 +32,12 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
   }
 
   void setupPasswordControllerListener() {
-    passwordController.addListener((){
+    passwordController.addListener(() {
       setState(() {
         hasLowerCase = AppRegex.hasLowerCase(passwordController.text);
         hasUpperCase = AppRegex.hasUpperCase(passwordController.text);
-        hasSpecialCharacter = AppRegex.hasSpecialCharacter(passwordController.text);
+        hasSpecialCharacter =
+            AppRegex.hasSpecialCharacter(passwordController.text);
         hasNumber = AppRegex.hasNumber(passwordController.text);
         hasMinimalLength = AppRegex.hasMinLength(passwordController.text);
       });
@@ -50,12 +51,14 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
       child: Column(
         children: [
           AppTextFormField(
-              hintText: 'Email',
-              validator: (value){
-                if (value == null || value.isEmpty || !AppRegex.isEmailValid(value)){
-                  return 'Please enter a valid email';
-                }
-              },
+            hintText: 'Email',
+            validator: (value) {
+              if (value == null ||
+                  value.isEmpty ||
+                  !AppRegex.isEmailValid(value)) {
+                return 'Please enter a valid email';
+              }
+            },
             controller: context.read<LoginCubit>().emailController,
           ),
           verticalSpace(18),
@@ -64,19 +67,16 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
             controller: context.read<LoginCubit>().passwordController,
             isObscureText: isObscuredText,
             suffixIcon: GestureDetector(
-              onTap: (){
+              onTap: () {
                 setState(() {
-                  isObscuredText =!isObscuredText;
+                  isObscuredText = !isObscuredText;
                 });
               },
               child: Icon(
-                  isObscuredText ?
-                  Icons.visibility_off :
-                  Icons.visibility
-              ),
+                  isObscuredText ? Icons.visibility_off : Icons.visibility),
             ),
-            validator: (value){
-              if (value == null || value.isEmpty){
+            validator: (value) {
+              if (value == null || value.isEmpty) {
                 return 'Please enter a valid password';
               }
             },
@@ -93,6 +93,7 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
       ),
     );
   }
+
   @override
   void dispose() {
     super.dispose();

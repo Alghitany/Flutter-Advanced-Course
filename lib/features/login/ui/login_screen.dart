@@ -24,33 +24,34 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                  Text('Welcome Back',
-                    style: TextStyles.font24BlueBold,
-                  ),
+                Text(
+                  'Welcome Back',
+                  style: TextStyles.font24BlueBold,
+                ),
                 verticalSpace(8),
-                Text('We\'re excited to have you back, can\'t wait to see what you\'ve been up to since you last logged in.',
+                Text(
+                  'We\'re excited to have you back, can\'t wait to see what you\'ve been up to since you last logged in.',
                   style: TextStyles.font14GreyRegular,
                 ),
                 verticalSpace(36),
-
                 Column(
                   children: [
-                   const EmailAndPassword(),
-                   verticalSpace(24),
-                   Align(
-                     alignment: AlignmentDirectional.centerEnd,
-                     child: Text(
-                         'Forget Password?',
-                       style: TextStyles.font13BlueRegular,
-                     ),
-                   ),
+                    const EmailAndPassword(),
+                    verticalSpace(24),
+                    Align(
+                      alignment: AlignmentDirectional.centerEnd,
+                      child: Text(
+                        'Forget Password?',
+                        style: TextStyles.font13BlueRegular,
+                      ),
+                    ),
                     verticalSpace(40),
                     AppTextButton(
-                        buttonText: 'Login',
-                        textStyle: TextStyles.font16WhiteSemiBold,
-                        onPressed: () {
-                          validateThenDoLogin(context);
-                        },
+                      buttonText: 'Login',
+                      textStyle: TextStyles.font16WhiteSemiBold,
+                      onPressed: () {
+                        validateThenDoLogin(context);
+                      },
                     ),
                     verticalSpace(16),
                     const TermsAndConditionsText(),
@@ -68,7 +69,7 @@ class LoginScreen extends StatelessWidget {
   }
 
   void validateThenDoLogin(BuildContext context) {
-    if (context.read<LoginCubit>().formKey.currentState!.validate()){
+    if (context.read<LoginCubit>().formKey.currentState!.validate()) {
       context.read<LoginCubit>().emitLoginStates();
     }
   }

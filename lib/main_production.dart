@@ -9,8 +9,7 @@ import 'core/helpers/shared_pref_helper.dart';
 import 'core/routing/app_router.dart';
 import 'doc_app.dart';
 
-
-void main() async{
+void main() async {
   Config.appFlavor = Flavor.production; // Set flavor
   WidgetsFlutterBinding.ensureInitialized();
   setupGetIt();
@@ -20,11 +19,12 @@ void main() async{
   runApp(DocApp(appRouter: AppRouter()));
 }
 
-checkIfLoggedUser() async{
-  String? userToken = await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken);
-  if(!userToken.isNullOrEmpty()){
+checkIfLoggedUser() async {
+  String? userToken =
+      await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken);
+  if (!userToken.isNullOrEmpty()) {
     isLoggedInUser = true;
-  } else{
+  } else {
     isLoggedInUser = false;
   }
 }

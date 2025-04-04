@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:week7/core/networking/api_error_handler.dart';
 import 'package:week7/features/home/data/models/specializations_response_model.dart';
@@ -10,6 +11,18 @@ class HomeState with _$HomeState {
 
   // Specializations
   const factory HomeState.specializationLoading() = SpecializationLoading;
-  const factory HomeState.specializationSuccess(SpecializationsResponseModel specializationsResponseModel) = SpecializationSuccess;
-  const factory HomeState.specializationError (ErrorHandler errorHandler) = SpecializationError;
+
+  const factory HomeState.specializationSuccess(
+          List<SpecializationsData?>? specializationDataList) =
+      SpecializationSuccess;
+
+  const factory HomeState.specializationError(ErrorHandler errorHandler) =
+      SpecializationError;
+
+  // Doctors
+  const factory HomeState.doctorsSuccess(List<Doctors?>? doctorsList) =
+      DoctorsSuccess;
+
+  const factory HomeState.doctorsError(ErrorHandler errorHandler) =
+      DoctorsError;
 }

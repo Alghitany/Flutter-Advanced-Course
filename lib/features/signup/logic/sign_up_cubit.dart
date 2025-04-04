@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:week7/features/signup/logic/sign_up_state.dart';
+
 import '../data/models/sign_up_request_body.dart';
 import '../data/repos/sign_up_repo.dart';
 
 class SignupCubit extends Cubit<SignupState> {
   final SignupRepo _signupRepo;
+
   SignupCubit(this._signupRepo) : super(const SignupState.initial());
 
   TextEditingController nameController = TextEditingController();
@@ -13,7 +15,7 @@ class SignupCubit extends Cubit<SignupState> {
   TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController passwordConfirmationController =
-  TextEditingController();
+      TextEditingController();
   final formKey = GlobalKey<FormState>();
 
   void emitSignupStates() async {

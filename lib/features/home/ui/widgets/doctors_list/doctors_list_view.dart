@@ -5,6 +5,7 @@ import 'doctors_list_view_item.dart';
 
 class DoctorsListView extends StatelessWidget {
   final List<Doctors?>? doctorsList;
+
   const DoctorsListView({super.key, this.doctorsList});
 
   @override
@@ -12,12 +13,10 @@ class DoctorsListView extends StatelessWidget {
     return Expanded(
         child: ListView.builder(
             itemCount: doctorsList?.length,
-            itemBuilder: (context, index){
+            itemBuilder: (context, index) {
               return DoctorsListViewItem(
                 doctorsModel: doctorsList?[index],
               );
-            }
-        )
-    );
+            }));
   }
 }

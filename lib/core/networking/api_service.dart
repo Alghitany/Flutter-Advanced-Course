@@ -15,11 +15,11 @@ abstract class ApiService {
 
   @POST(ApiConstants.login)
   Future<LoginResponse> login(
-      @Body() LoginRequestBody loginRequestBody,
-      );
+    @Body() LoginRequestBody loginRequestBody,
+  );
 
-   @POST(ApiConstants.signup)
-   Future<SignupResponse> signup(
-       @Body() SignupRequestBody signupRequestBody,
-       );
+  @POST(ApiConstants.signup)
+  Future<SignupResponse> signup(
+    @Body() SignupRequestBody signupRequestBody,
+  );
 }
