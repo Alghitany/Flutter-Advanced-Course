@@ -12,7 +12,6 @@ import 'package:week7/features/signup/ui/sign_up_screen.dart';
 import '../../features/home/ui/home_screen.dart';
 
 class AppRouter {
-
   Route? generateRoute(RouteSettings settings) {
     final arguments = settings.arguments;
 
@@ -23,27 +22,22 @@ class AppRouter {
         );
       case Routes.loginScreen:
         return MaterialPageRoute(
-            builder: (_) =>
-                BlocProvider(
+            builder: (_) => BlocProvider(
                   create: (context) => getIt<LoginCubit>(),
                   child: const LoginScreen(),
-                )
-        );
+                ));
       case Routes.signupScreen:
         return MaterialPageRoute(
-            builder: (_) =>
-                BlocProvider(
+            builder: (_) => BlocProvider(
                   create: (context) => getIt<SignupCubit>(),
                   child: const SignupScreen(),
-                )
-        );
+                ));
       case Routes.homeScreen:
         return MaterialPageRoute(
-          builder: (_) =>
-              BlocProvider(
-                create: (context) => HomeCubit(getIt())..getSpecializations(),
-                child: const HomeScreen(),
-              ),
+          builder: (_) => BlocProvider(
+            create: (context) => HomeCubit(getIt())..getSpecializations(),
+            child: const HomeScreen(),
+          ),
         );
       default:
         return null;

@@ -12,14 +12,14 @@ import '../../features/signup/logic/sign_up_cubit.dart';
 
 final getIt = GetIt.instance;
 
-Future<void> setupGetIt() async{
+Future<void> setupGetIt() async {
   // Dio & Api Service
   Dio dio = DioFactory.getDio();
-  getIt.registerLazySingleton<ApiService>(()=> ApiService(dio));
+  getIt.registerLazySingleton<ApiService>(() => ApiService(dio));
 
   // Login
-  getIt.registerLazySingleton<LoginRepo>(()=> LoginRepo(getIt()));
-  getIt.registerFactory<LoginCubit>(()=> LoginCubit(getIt()));
+  getIt.registerLazySingleton<LoginRepo>(() => LoginRepo(getIt()));
+  getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt()));
 
   // signup
   getIt.registerLazySingleton<SignupRepo>(() => SignupRepo(getIt()));

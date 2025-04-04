@@ -1,7 +1,5 @@
-
 bool isLoggedInUser = false;
 
-class SharedPrefKeys{
+class SharedPrefKeys {
   static const String userToken = 'userToken';
-
 }

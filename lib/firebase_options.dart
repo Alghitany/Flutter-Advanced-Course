@@ -65,5 +65,4 @@ class DefaultFirebaseOptions {
     storageBucket: 'week7-36d5d.firebasestorage.app',
     iosBundleId: 'com.example.week7',
   );
-
 }
