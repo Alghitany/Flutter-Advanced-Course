@@ -5,7 +5,8 @@ platform :android do
   lane :firebase_distribution do
     # Clean and build Flutter APK for the production flavor
     sh "flutter clean"
-    sh "dart run build_runner build --delete-conflicting-outputs"
+    sh "flutter pub get"
+    sh "flutter pub run build_runner build --delete-conflicting-outputs"
     sh "flutter build apk --release --flavor production --target lib/main_production.dart --no-tree-shake-icons"
 
     # Distribute APK to Firebase App Distribution
