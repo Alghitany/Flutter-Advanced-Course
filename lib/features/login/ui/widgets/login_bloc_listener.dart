@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:week7/core/helpers/extensions.dart';
+import 'package:week7/core/networking/api_error_model.dart';
 import 'package:week7/core/routing/routes.dart';
 import 'package:week7/features/login/logic/login_cubit.dart';
 import 'package:week7/features/login/logic/login_state.dart';
@@ -15,9 +16,9 @@ class LoginBlocListener extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<LoginCubit, LoginState>(
         listenWhen: (previous, current) =>
-            current is Loading || current is Success || current is Error,
+            current is LoginLoading || current is LoginSuccess || current is LoginError,
         listener: (context, state) {
-          state.whenOrNull(loading: () {
+          state.whenOrNull(loginLoading: () {
             showDialog(
               context: context,
               builder: (context) => const Center(
@@ -26,17 +27,17 @@ class LoginBlocListener extends StatelessWidget {
                 ),
               ),
             );
-          }, success: (loginResponse) {
+          }, loginSuccess: (loginResponse) {
             context.pop;
             context.pushNamed(Routes.homeScreen);
-          }, error: (error) {
-            setupErrorState(context, error);
+          }, loginError: (apiErrorModel) {
+            setupErrorState(context, apiErrorModel);
           });
         },
         child: const SizedBox.shrink());
   }
 
-  void setupErrorState(BuildContext context, String error) {
+  void setupErrorState(BuildContext context, ApiErrorModel apiErrorModel) {
     context.pop();
     showDialog(
         context: context,
@@ -47,7 +48,7 @@ class LoginBlocListener extends StatelessWidget {
                 size: 32,
               ),
               content: Text(
-                error,
+                apiErrorModel.getAllErrorMessages(),
                 style: TextStyles.font15DarkBlueMedium,
               ),
               actions: [
