@@ -10,14 +10,14 @@ class PasswordValidations extends StatelessWidget {
   final bool hasSpecialCharacter;
   final bool hasNumber;
   final bool hasMinimalLength;
-  const PasswordValidations({
-    super.key,
-    required this.hasLowerCase,
-    required this.hasUpperCase,
-    required this.hasSpecialCharacter,
-    required this.hasNumber,
-    required this.hasMinimalLength
-  });
+
+  const PasswordValidations(
+      {super.key,
+      required this.hasLowerCase,
+      required this.hasUpperCase,
+      required this.hasSpecialCharacter,
+      required this.hasNumber,
+      required this.hasMinimalLength});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class PasswordValidations extends StatelessWidget {
     );
   }
 
- Widget buildValidationRow(String text, bool hasValidated) {
+  Widget buildValidationRow(String text, bool hasValidated) {
     return Row(
       children: [
         const CircleAvatar(
@@ -45,14 +45,15 @@ class PasswordValidations extends StatelessWidget {
         ),
         horizontalSpace(6),
         Text(
-            text,
-            style: TextStyles.font13DarkBlueRegular.copyWith(
-              decoration: hasValidated ? TextDecoration.lineThrough: null,
-              decorationColor: Colors.green,
-              decorationThickness: 2,
-              color: hasValidated ? ColorsManager.grey : ColorsManager.darkBlue,
-            ),)
+          text,
+          style: TextStyles.font13DarkBlueRegular.copyWith(
+            decoration: hasValidated ? TextDecoration.lineThrough : null,
+            decorationColor: Colors.green,
+            decorationThickness: 2,
+            color: hasValidated ? ColorsManager.grey : ColorsManager.darkBlue,
+          ),
+        )
       ],
     );
- }
+  }
 }
